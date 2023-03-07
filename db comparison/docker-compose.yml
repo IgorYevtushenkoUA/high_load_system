@@ -1,0 +1,47 @@
+version: '3.1'
+services:
+#     postgres:
+#         image: postgres:10.5
+#         restart: always
+#         environment:
+#           - POSTGRES_USER=postgres
+#           - POSTGRES_PASSWORD=admin
+#         logging:
+#           options:
+#             max-size: 10m
+#             max-file: "3"
+#         ports:
+#           - '5438:5432'
+#         volumes:
+#           - ./data/postgres:/var/lib/postgresql/data
+#           - ./db/postgres:/docker-entrypoint-initdb.d/
+#           - ./db:/csv/
+#     maria:
+#        image:
+#          mariadb:10.9.4
+#        environment:
+#          MYSQL_ROOT_PASSWORD: pass
+#        expose:
+#          - 3306
+#        ports:
+#          - '3306:3306'
+#        volumes:
+#          - ./data/maria:/var/lib/mysql
+#          - ./db/maria:/docker-entrypoint-initdb.d/
+#          - ./db:/csv/
+     monetdb:
+         image: monetdb/monetdb:latest
+         environment:
+           - MDB_DB_ADMIN_PASS=pass
+           - MONET_DATABASE=mydb  monetdb
+           - MONET_USER=root      monetdb
+           - MONET_PASSWORD=pass  pass
+         expose:
+           - "50000"
+         ports:
+           - "50000:50000"
+         volumes:
+           - ./data/monet:/var/monetdb/data
+           - ./db/monet:/docker-entrypoint-initdb.d/
+#          - ./db:/csv/
+
