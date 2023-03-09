@@ -1,6 +1,6 @@
--- CREATE SCHEMA IF NOT EXISTS shopping;
---
--- SET SCHEMA 'shopping';
+CREATE SCHEMA IF NOT EXISTS shopping;
+
+SET SCHEMA shopping;
 
 CREATE TABLE stores (
                         id INT NOT NULL PRIMARY KEY,

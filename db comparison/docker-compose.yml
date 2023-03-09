@@ -29,19 +29,31 @@ services:
 #          - ./data/maria:/var/lib/mysql
 #          - ./db/maria:/docker-entrypoint-initdb.d/
 #          - ./db:/csv/
-     monetdb:
-         image: monetdb/monetdb:latest
-         environment:
-           - MDB_DB_ADMIN_PASS=pass
-           - MONET_DATABASE=mydb  monetdb
-           - MONET_USER=root      monetdb
-           - MONET_PASSWORD=pass  pass
-         expose:
-           - "50000"
-         ports:
-           - "50000:50000"
-         volumes:
-           - ./data/monet:/var/monetdb/data
-           - ./db/monet:/docker-entrypoint-initdb.d/
+    #  monetdb:
+    #      image: monetdb/monetdb:latest
+    #      environment:
+    #        - MONET_DATABASE=mydb  
+    #        - MONET_USER=mydb      
+    #        - MONET_PASSWORD=pass
+    #        - MDB_DBNAME=mydb1
+    #        - MDB_USER=mydb1
+    #        - MDB_PASS=pass 
+    #        - MDB_DB_ADMIN_PASS=pass
+    #      expose:
+    #        - "50000"
+    #      ports:
+    #        - "50000:50000"
+    #      volumes:
+    #        - ./data/monet:/var/monetdb/data
+    #        - ./db/monet:/docker-entrypoint-initdb.d/
 #          - ./db:/csv/
+    monetdb:
+      image: monetdb/monetdb
+      ports:
+        - 50000:50000
+      volumes:
+        - /var/monetdb5/dbfarm
+        - "./data:/home/data"
+      environment:
+        - MDB_DB_ADMIN_PASS=password
 
